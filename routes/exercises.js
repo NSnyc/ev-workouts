@@ -7,6 +7,7 @@ const router = Router()
 router.get('/', exercisesCtrl.index)
 router.get('/new', exercisesCtrl.new)
 router.get('/:exerciseId', exercisesCtrl.show)
+router.get('/:exerciseId/edit', exercisesCtrl.edit)
 
 router.post('/', exercisesCtrl.create)
 

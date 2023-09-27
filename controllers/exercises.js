@@ -59,11 +59,26 @@ function deleteExercise(req, res) {
   })
 }
 
+function edit(req, res) {
+  Exercise.findById(req.params.exerciseId)
+  .then(exercise => {
+    res.render('exercises/edit', {
+      exercise,
+      title: 'Edit Exercise'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/exercises')
+  })
+}
+
 export {
   index,
   newExercise as new,
   create,
   show,
   deleteExercise as delete,
+  edit,
   
 }

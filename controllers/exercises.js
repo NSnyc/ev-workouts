@@ -21,7 +21,22 @@ function newExercise(req, res) {
   })
 }
 
+function create(req, res) {
+  console.log(req.body)
+  req.body.done = false
+  Exercise.create(req.body)
+  .then(exercise => {
+    res.redirect('/exercises')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/exercises')
+  })
+}
+
 export {
   index,
   newExercise as new,
+  create,
+  
 }

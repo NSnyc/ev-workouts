@@ -9,11 +9,14 @@ import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
 
+
+
 // import custom middleware
 import { passDataToView } from './middleware/middleware.js'
 
 // connect to MongoDB with mongoose
 import './config/database.js'
+import './config/passport.js'
 
 // load passport
 import'./config/passport.js'
@@ -38,6 +41,19 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: 'lax',
+    }
+  })
+)
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(passDataToView)
 
 // session middleware
 app.use(

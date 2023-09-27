@@ -148,46 +148,50 @@ function saveResults(req, res) {
     return res.redirect('/')
   }
   Workout.findById(req.params.workoutId)
-  .populate('exercises')
-  .then(workout => {
-    const exercisesResults = workout.exercises.map(exercise => {
-      const results = {
-        date: new Date(),
-        sets: [],
-      }
-      for (let i = 1; i <= exercise.sets; i++) {
-        results.sets.push({
-          reps: req.body[`${exercise._id}-set-${i}-reps`],
-          weight: req.body[`${exercise._id}-set-${i}-weight`]
-        })
-      }
-      return {
-        exercise: exercise._id,
-        results: results
-      }
+    .populate('exercises')
+    .then((workout) => {
+      const exercisesResults = workout.exercises.map((exercise) => {
+        const results = {
+          date: new Date(),
+          sets: [],
+        }
+        for (let i = 1; i <= exercise.sets; i++) {
+          const setReps = req.body[`${exercise._id}-set-${i}-reps`]
+          const setWeight = req.body[`${exercise._id}-set-${i}-weight`]
+          results.sets.push({
+            reps: setReps ? parseInt(setReps) : 0, // Ensure reps is a number
+            weight: setWeight ? parseFloat(setWeight) : 0, // Ensure weight is a number
+          })
+        }
+        return {
+          exercise: exercise._id,
+          results: results,
+        }
+      })
+      const newWorkoutResult = new WorkoutResult({
+        user: req.user._id,
+        workout: req.params.workoutId,
+        exercises: exercisesResults,
+      })
+      return newWorkoutResult.save()
     })
-    const newWorkoutResult = new WorkoutResult({
-      user: req.user._id,
-      workout: req.params.workoutId,
-      exercises: exercisesResults,
+    .then(() => {
+      res.redirect('/')
     })
-    return newWorkoutResult.save()
-  })
-  .then(() => {
-    res.redirect('/')
-  })
-  .catch(err => {
-    console.error(err)
-    res.redirect('/workouts')
-  })
+    .catch((err) => {
+      console.error(err)
+      res.redirect('/workouts')
+    })
 }
 
 function getWorkoutHistory(req) {
   if (!req.user) {
-    return Promise.resolve([])
+    return Promise.resolve([]);
   }
   return WorkoutResult.find({ user: req.user._id })
-    .populate('workout')
+    .populate({
+      path: 'exercises.exercise',
+    })
     .exec()
 }
 

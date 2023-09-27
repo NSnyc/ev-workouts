@@ -17,6 +17,22 @@
       <% workoutHistory.forEach(result => { %>
         <li>
           <strong><%= result.workout.name %></strong> - <%= result.date.toDateString() %>
+          <ul>
+            <% result.exercises.forEach(exerciseResult => { %>
+              <li>
+                <%= exerciseResult.exercise.text %>
+                <ul>
+                  <% if (exerciseResult.results && exerciseResult.results.length) { %>
+                    <% exerciseResult.results.forEach((set, index) => { %>
+                      <li>Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight ? set.weight + ' lbs' : 'N/A' %></li>
+                    <% }); %>
+                  <% } else { %>
+                    <li>No sets data available.</li>
+                  <% } %>
+                </ul>
+              </li>
+            <% }); %>
+          </ul>
         </li>
       <% }); %>
     </ul>

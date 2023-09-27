@@ -119,6 +119,20 @@ function removeExercise(req, res) {
     })
 }
 
+function start(req, res) {
+  Workout.findById(req.params.workoutId).populate('exercises')
+    .then(workout => {
+      res.render('workouts/start', {
+        workout: workout,
+        title: "Today's Workout",
+      })
+    })
+    .catch(err => {
+      console.error(err)
+      res.redirect('/workouts')
+    })
+}
+
 export {
   index,
   newWorkout as new,
@@ -127,5 +141,5 @@ export {
   deleteWorkout as delete,
   addExercise,
   removeExercise,
-  
+  start,
 }

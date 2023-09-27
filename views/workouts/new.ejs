@@ -1,0 +1,18 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+<main>
+<h1><%= title %></h1>
+
+
+<form action="/workouts/" method="POST" autocomplete="off">
+  <label for="workout-input">Workout:</label>
+  <input type="text" name="name" id="workout-input" placeholder="Name">
+  
+
+    <button type="submit">Add Workout</button>
+  </form>
+</p>
+
+</main>
+
+    <%- include('../partials/footer') %>

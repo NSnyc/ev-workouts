@@ -12,5 +12,6 @@ router.get('/:exerciseId/edit', exercisesCtrl.edit)
 router.post('/', exercisesCtrl.create)
 
 router.delete('/:exerciseId', exercisesCtrl.delete)
+router.put('/:exerciseId', exercisesCtrl.update)
 
 export { router }

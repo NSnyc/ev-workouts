@@ -73,6 +73,17 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  Exercise.findByIdAndUpdate(req.params.exerciseId, req.body, {new: true})
+  .then(exercise => {
+    res.redirect(`/exercises/${exercise._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/exercises')
+  })
+}
+
 export {
   index,
   newExercise as new,
@@ -80,5 +91,6 @@ export {
   show,
   deleteExercise as delete,
   edit,
+  update,
   
 }

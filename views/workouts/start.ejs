@@ -1,0 +1,18 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<form action="/workouts/<%= workout._id %>/start" method="POST">
+  <% workout.exercises.forEach(exercise => { %>
+    <fieldset>
+      <legend><%= exercise.text %></legend>
+      <% for(let i = 1; i <= exercise.sets; i++) { %>
+        <label>Set <%= i %></label>
+        <input type="number" name="<%= exercise._id %>-set-<%= i %>-reps" placeholder="Reps">
+        <input type="number" name="<%= exercise._id %>-set-<%= i %>-weight" placeholder="Weight (optional)">
+      <% } %>
+    </fieldset>
+  <% }) %>
+  <button type="submit">Save Results</button>
+</form>
+
+<%- include('../partials/footer') %>

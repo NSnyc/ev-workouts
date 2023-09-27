@@ -1,4 +1,5 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/exercises/index.css">
 <%- include('../partials/nav') %>
 
 <title><%= title %></title>
@@ -19,6 +20,33 @@
     <% workouts.forEach(workout => { %>
       <tr>
         <td><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
+        
+        <td>USER</td>
+        <td>
+          <ul>
+            <% workout.exercises.forEach(exercise => { %>
+              <li>
+                <%= exercise.text %>
+                <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST" style="display: inline;">
+                  <button id="delete" class="delete" type="submit">X</button>
+                </form>
+              </li>
+            <% }) %>
+          </ul>
+        </td>
+        <td>
+          <form action="/workouts/<%= workout._id %>/exercises" method="POST" autocomplete="off">
+              <select name="exerciseId">
+                  <% exercises.forEach(exercise => { %>
+                      <option value="<%= exercise._id %>"><%= exercise.text %></option>
+                  <% }) %>
+              </select>
+              <button type="submit">Add</button>
+          </form>
+      </td>
+      <td>
+        <a href="/workouts/<%= workout._id %>/start" class="btn">Start Workout</a>
+      </td>
         <td>
           <form class="delete-form" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>

@@ -8,6 +8,7 @@ router.get('/new', workoutsCtrl.new)
 router.get('/:workoutId', workoutsCtrl.show)
 
 router.post('/', workoutsCtrl.create)
+router.post('/:workoutId/exercises', workoutsCtrl.addExercise)
 
 router.delete('/:workoutId', workoutsCtrl.delete)
 

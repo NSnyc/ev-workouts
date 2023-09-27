@@ -1,27 +1,34 @@
+import { Exercise } from "../models/exercise.js"
 import { Workout } from "../models/workout.js"
 
 function index(req, res) {
-  Workout.find({})
-    .then(workouts => {
-      res.render('workouts/index', {
-        workouts,
-        title: 'All Workouts'
-      })
+  Promise.all([
+    Workout.find({}).populate('exercises'),
+    Exercise.find({})
+  ])
+  .then(([workouts, exercises]) => {
+    res.render('workouts/index', {
+      workouts,
+      exercises,
+      title: 'All Workouts'
     })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/workouts/new')
-    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.redirect('/workouts/new')
+  })
 }
 
 function newWorkout(req, res) {
   Promise.all([
     Workout.find({}),
+    Exercise.find({})
   ])
-  .then(([workouts]) => {
+  .then(([workouts, exercises]) => {
     res.render('workouts/new', {
       title: 'Add Workout',
       workouts,
+      exercises
     })
   })
   .catch(err => {
@@ -31,7 +38,9 @@ function newWorkout(req, res) {
 }
 
 function create(req, res) {
-    Workout.create(req.body)
+  const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds]
+  req.body.exercises = exerciseIds
+  Workout.create(req.body)
   .then(workout => {
     res.redirect('/workouts/new')
   })
@@ -43,15 +52,21 @@ function create(req, res) {
 
 function show(req, res) {
   Workout.findById(req.params.workoutId)
+  .populate('exercises')
   .then(workout => {
-    res.render('workouts/show', {
-      workout,
-      title: 'Workout Details'
+    console.log(workout)
+    Exercise.find({_id: {$nin: workout.exercises}})
+    .then(exercise => {
+      res.render('workouts/show', {
+        workout,
+        title: 'Workout Detail',
+        
+      })
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/workouts')
+    .catch(err => {
+      console.log(err)
+      res.redirect('/workouts')
+    })
   })
   .catch(err => {
     console.log(err)
@@ -70,11 +85,30 @@ function deleteWorkout(req, res) {
     })
 }
 
+function addExercise(req, res) {
+  Workout.findById(req.params.workoutId)
+    .then(workout => {
+      if (workout.exercises.includes(req.body.exerciseId)) {
+        res.redirect('/workouts')
+      } else {
+        workout.exercises.push(req.body.exerciseId)
+        return workout.save()
+          .then(() => {
+            res.redirect('/workouts')
+          })
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/workouts')
+    })
+}
+
 export {
   index,
   newWorkout as new,
   create,
   show,
   deleteWorkout as delete,
-
+  addExercise,
 }

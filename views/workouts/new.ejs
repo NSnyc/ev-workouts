@@ -7,7 +7,11 @@
 <form action="/workouts/" method="POST" autocomplete="off">
   <label for="workout-input">Workout:</label>
   <input type="text" name="name" id="workout-input" placeholder="Name">
-  
+  <select name="exerciseIds" id="exercise-dropdown" multiple size="5">
+    <% exercises.forEach(exercise => { %>
+        <option value="<%= exercise._id %>"><%= exercise.text %></option>
+    <% }) %>
+</select>
 
     <button type="submit">Add Workout</button>
   </form>

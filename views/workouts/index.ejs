@@ -19,8 +19,6 @@
     <% workouts.forEach(workout => { %>
       <tr>
         <td><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
-        
-        <td>USER</td>
         <td>
           <form class="delete-form" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>

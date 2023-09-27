@@ -41,9 +41,27 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Workout.findById(req.params.workoutId)
+  .then(workout => {
+    res.render('workouts/show', {
+      workout,
+      title: 'Workout Details'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
+}
+
 export {
   index,
   newWorkout as new,
   create,
-
+  show,
 }

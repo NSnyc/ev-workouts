@@ -104,6 +104,21 @@ function addExercise(req, res) {
     })
 }
 
+function removeExercise(req, res) {
+  Workout.findById(req.params.workoutId)
+    .then(workout => {
+      workout.exercises.pull(req.params.exerciseId)
+      return workout.save()
+    })
+    .then(() => {
+      res.redirect('/workouts')
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/workouts')
+    })
+}
+
 export {
   index,
   newWorkout as new,
@@ -111,4 +126,6 @@ export {
   show,
   deleteWorkout as delete,
   addExercise,
+  removeExercise,
+  
 }

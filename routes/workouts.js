@@ -11,6 +11,7 @@ router.post('/', workoutsCtrl.create)
 router.post('/:workoutId/exercises', workoutsCtrl.addExercise)
 
 router.delete('/:workoutId', workoutsCtrl.delete)
+router.delete('/:workoutId/exercises/:exerciseId', workoutsCtrl.removeExercise)
 
 export {
   router

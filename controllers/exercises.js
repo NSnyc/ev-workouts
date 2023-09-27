@@ -92,5 +92,5 @@ export {
   deleteExercise as delete,
   edit,
   update,
-  
+
 }

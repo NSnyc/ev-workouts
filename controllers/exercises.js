@@ -15,6 +15,13 @@ function index(req, res) {
   })
 }
 
+function newExercise(req, res) {
+  res.render('exercises/new', {
+    title: 'Add Exercise'
+  })
+}
+
 export {
   index,
+  newExercise as new,
 }

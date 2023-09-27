@@ -16,6 +16,7 @@ const workoutResultSchema = new mongoose.Schema({
   }],
 })
 
+
 const WorkoutResult = mongoose.model('WorkoutResult', workoutResultSchema)
 
 export {

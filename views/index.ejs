@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1>Hello, <%= user ? user.profile.name : "friend" %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -10,6 +10,18 @@
         alt="<%= user.profile.name %> avatar"
       />
     </div>
+  <% } %>
+  <% if (workoutHistory && workoutHistory.length) { %>
+    <h2>Your Workout History</h2>
+    <ul>
+      <% workoutHistory.forEach(result => { %>
+        <li>
+          <strong><%= result.workout.name %></strong> - <%= result.date.toDateString() %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } else { %>
+    <p>No workout history available.</p>
   <% } %>
 </main>
 

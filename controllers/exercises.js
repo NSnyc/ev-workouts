@@ -22,7 +22,6 @@ function newExercise(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body)
   req.body.done = false
   Exercise.create(req.body)
   .then(exercise => {

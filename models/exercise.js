@@ -13,7 +13,6 @@ const exerciseSchema = new Schema({
     enum: ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders', 'Core', 'Full Body']
   },
   sets: Number,
-  results: [resultSchema]
 })
 
 // Compile the schema into a model and export it

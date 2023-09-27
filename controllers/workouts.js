@@ -1,5 +1,8 @@
 import { Exercise } from "../models/exercise.js"
 import { Workout } from "../models/workout.js"
+import { WorkoutResult } from "../models/workoutResult.js"
+import { User } from "../models/user.js"
+
 
 function index(req, res) {
   Promise.all([
@@ -62,7 +65,6 @@ function show(req, res) {
   Workout.findById(req.params.workoutId)
   .populate('exercises')
   .then(workout => {
-    console.log(workout)
     Exercise.find({_id: {$nin: workout.exercises}})
     .then(exercise => {
       res.render('workouts/show', {
@@ -129,30 +131,29 @@ function removeExercise(req, res) {
 
 function start(req, res) {
   Workout.findById(req.params.workoutId).populate('exercises')
-    .then(workout => {
-      res.render('workouts/start', {
-        workout: workout,
-        title: "Today's Workout",
-      })
+  .then(workout => {
+    res.render('workouts/start', {
+      workout: workout,
+      title: "Start Workout",
     })
-    .catch(err => {
-      console.error(err)
-      res.redirect('/workouts')
-    })
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/workouts')
+  })
 }
 
 function saveResults(req, res) {
   if (!req.user) {
-    return res.redirect('/login')
+    return res.redirect('/')
   }
-  Workout.findById(req.params.workoutId).populate('exercises')
+  Workout.findById(req.params.workoutId)
+  .populate('exercises')
   .then(workout => {
-    const promises = []
-    workout.exercises.forEach(exercise => {
+    const exercisesResults = workout.exercises.map(exercise => {
       const results = {
         date: new Date(),
         sets: [],
-        user: req.user._id // Save the user's ID with the results
       }
       for (let i = 1; i <= exercise.sets; i++) {
         results.sets.push({
@@ -160,18 +161,34 @@ function saveResults(req, res) {
           weight: req.body[`${exercise._id}-set-${i}-weight`]
         })
       }
-      exercise.results.push(results)
-      promises.push(exercise.save())
+      return {
+        exercise: exercise._id,
+        results: results
+      }
     })
-    return Promise.all(promises);
+    const newWorkoutResult = new WorkoutResult({
+      user: req.user._id,
+      workout: req.params.workoutId,
+      exercises: exercisesResults,
+    })
+    return newWorkoutResult.save()
   })
   .then(() => {
-    res.redirect('/workouts');
+    res.redirect('/')
   })
   .catch(err => {
     console.error(err)
     res.redirect('/workouts')
   })
+}
+
+function getWorkoutHistory(req) {
+  if (!req.user) {
+    return Promise.resolve([])
+  }
+  return WorkoutResult.find({ user: req.user._id })
+    .populate('workout')
+    .exec()
 }
 
 export {
@@ -183,4 +200,6 @@ export {
   addExercise,
   removeExercise,
   start,
+  saveResults,
+  getWorkoutHistory,
 }

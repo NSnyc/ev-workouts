@@ -8,6 +8,7 @@ router.get('/new', workoutsCtrl.new)
 router.get('/:workoutId', workoutsCtrl.show)
 router.get('/:workoutId/start', workoutsCtrl.start)
 
+router.post('/workouts/:workoutId/results', workoutsCtrl.saveResults);
 router.post('/', workoutsCtrl.create)
 router.post('/:workoutId/exercises', workoutsCtrl.addExercise)
 

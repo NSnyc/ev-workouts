@@ -38,16 +38,24 @@ function newWorkout(req, res) {
 }
 
 function create(req, res) {
-  const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds]
-  req.body.exercises = exerciseIds
-  Workout.create(req.body)
-  .then(workout => {
-    res.redirect('/workouts/new')
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/workouts')
-  })
+  if (!req.user) {
+    return res.redirect('/login')
+  }
+  const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds];
+  const workoutData = {
+    name: req.body.name,
+    user: req.user._id,
+    exercises: exerciseIds,
+    date: Date.now(),
+  }
+  Workout.create(workoutData)
+    .then(workout => {
+      res.redirect('/workouts/new')
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/workouts')
+    })
 }
 
 function show(req, res) {
@@ -131,6 +139,39 @@ function start(req, res) {
       console.error(err)
       res.redirect('/workouts')
     })
+}
+
+function saveResults(req, res) {
+  if (!req.user) {
+    return res.redirect('/login')
+  }
+  Workout.findById(req.params.workoutId).populate('exercises')
+  .then(workout => {
+    const promises = []
+    workout.exercises.forEach(exercise => {
+      const results = {
+        date: new Date(),
+        sets: [],
+        user: req.user._id // Save the user's ID with the results
+      }
+      for (let i = 1; i <= exercise.sets; i++) {
+        results.sets.push({
+          reps: req.body[`${exercise._id}-set-${i}-reps`],
+          weight: req.body[`${exercise._id}-set-${i}-weight`]
+        })
+      }
+      exercise.results.push(results)
+      promises.push(exercise.save())
+    })
+    return Promise.all(promises);
+  })
+  .then(() => {
+    res.redirect('/workouts');
+  })
+  .catch(err => {
+    console.error(err)
+    res.redirect('/workouts')
+  })
 }
 
 export {

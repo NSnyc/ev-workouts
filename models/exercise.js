@@ -6,18 +6,14 @@ const exerciseSchema = new Schema({
   text: String,
   category: {
     type: String,
-    enum: ['Cardio', 'Body Weight', 'Weights']},
+    enum: ['Cardio', 'Body Weight', 'Weights']
+  },
   muscleGroup: {
     type: String,
-  enum: ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders', 'Core', 'Full Body']},
+    enum: ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders', 'Core', 'Full Body']
+  },
   sets: Number,
-  results: [{
-    date: Date,
-    sets: [{
-      reps: Number,
-      weight: Number
-    }]
-  }]
+  results: [resultSchema]
 })
 
 // Compile the schema into a model and export it

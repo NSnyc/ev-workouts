@@ -1,0 +1,36 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<title><%= title %></title>
+
+<main>
+<h1>Workout List</h1>
+<a href="/workouts/new">Add New Workout</a>
+<table id="list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>User</th>
+      <th>Exercises</th>
+      <th>Add Exercise</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% workouts.forEach(workout => { %>
+      <tr>
+        <td><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
+        
+        <td>USER</td>
+        <td>
+          <form class="delete-form" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form>
+          
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+</main>
+
+<%- include('../partials/footer') %>

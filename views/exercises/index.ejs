@@ -1,0 +1,38 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/index.css">
+<%- include('../partials/nav') %>
+
+<title><%= title %></title>
+
+<main>
+  <h1>Exercise List</h1>
+  <a href="/exercises/new">Add New Exercise</a>
+  <table id="list">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Workout Type</th>
+      <th>Muscle Group</th>
+      <th>Sets</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% exercises.forEach(function(exercise) { %>
+    <tr>
+      <td><%= exercise.text %></td>
+      <td><%= exercise.category %></td>
+      <td><%= exercise.muscleGroup %></td>
+      <td><%= exercise.sets %></td>
+      <td>
+        <a href="/exercises/<%= exercise._id %>">Details</a>
+      </td>
+      <td><form  class="delete-form" action="/exercises/<%= exercise._id %>?_method=DELETE" method="POST">
+        <button type="submit">X</button>
+      </form>
+      </td>
+      </tr>
+      <% }) %>
+  </tbody>
+</main>
+  
+  <%- include('../partials/footer') %>

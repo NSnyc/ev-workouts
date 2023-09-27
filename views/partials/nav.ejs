@@ -9,6 +9,11 @@
     >
       ALL WORKOUTS
     </a>
+    <a 
+      href="/exercises" class=<%= title === 'All Exercises' ? 'active' : '' %>
+    >
+      ALL EXERCISES
+    </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>

@@ -1,0 +1,26 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/exercises/show.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1>Exercises</h1>
+  <section>
+    <div>Name: </div>
+    <div><%= exercise.text %></div>
+    <div>Type: </div>
+    <div><%= exercise.category %></div>
+    <div>Muscle Group: </div>
+    <div><%= exercise.muscleGroup %></div>
+    <div>Sets: </div>
+    <div><%= exercise.sets%></div>
+    <div>
+      <a href="/exercises/<%= exercise._id %>/edit">
+        <button>Edit Exercise</button>
+      </a>
+    </div>
+  </section>
+  <p></p>
+	<a href="/exercises">Go back</a>
+</main>
+
+  <%- include('../partials/footer') %>

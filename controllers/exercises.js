@@ -34,9 +34,24 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  Exercise.findById(req.params.exerciseId)
+  .then(exercise => {
+    res.render('exercises/show', {
+      exercise,
+      title: 'Exercise Details'
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/exercises')
+  })
+}
+
 export {
   index,
   newExercise as new,
   create,
+  show,
   
 }

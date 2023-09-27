@@ -10,4 +10,6 @@ router.get('/:exerciseId', exercisesCtrl.show)
 
 router.post('/', exercisesCtrl.create)
 
+router.delete('/:exerciseId', exercisesCtrl.delete)
+
 export { router }

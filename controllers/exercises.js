@@ -48,10 +48,22 @@ function show(req, res) {
   })
 }
 
+function deleteExercise(req, res) {
+  Exercise.findByIdAndDelete(req.params.exerciseId)
+  .then(exercise => {
+    res.redirect('/exercises')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/exercises')
+  })
+}
+
 export {
   index,
   newExercise as new,
   create,
   show,
+  deleteExercise as delete,
   
 }

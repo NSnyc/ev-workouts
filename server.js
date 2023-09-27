@@ -41,19 +41,6 @@ app.use(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      sameSite: 'lax',
-    }
-  })
-)
-app.use(passport.initialize())
-app.use(passport.session())
-app.use(passDataToView)
 
 // session middleware
 app.use(

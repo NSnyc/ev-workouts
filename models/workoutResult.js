@@ -5,7 +5,7 @@ const workoutResultSchema = new mongoose.Schema({
   workout: { type: mongoose.Schema.Types.ObjectId, ref: 'Workout' },
   date: { type: Date, default: Date.now },
   exercises: [{
-    exercise: { type: mongoose.Schema.Types.ObjectId, ref: 'Exercise' },
+    exerciseName: String,
     results: [{
       date: Date,
       sets: [{
@@ -15,6 +15,7 @@ const workoutResultSchema = new mongoose.Schema({
     }],
   }],
 })
+
 
 
 const WorkoutResult = mongoose.model('WorkoutResult', workoutResultSchema)

@@ -132,10 +132,18 @@ function removeExercise(req, res) {
 function start(req, res) {
   Workout.findById(req.params.workoutId).populate('exercises')
   .then(workout => {
-    res.render('workouts/start', {
-      workout: workout,
-      title: "Start Workout",
-    })
+    Exercise.find({ _id: { $in: workout.exercises } }) // Fetch exercise names
+      .then(exercises => {
+        res.render('workouts/start', {
+          workout: workout,
+          exercises: exercises, // Pass exercise names to the template
+          title: "Start Workout",
+        })
+      })
+      .catch(err => {
+        console.error(err)
+        res.redirect('/workouts')
+      })
   })
   .catch(err => {
     console.error(err)
@@ -143,46 +151,48 @@ function start(req, res) {
   })
 }
 
+
 function saveResults(req, res) {
   if (!req.user) {
-    return res.redirect('/')
+    return res.redirect('/');
   }
   Workout.findById(req.params.workoutId)
-  .populate('exercises')
-  .then((workout) => {
-    const exercisesResults = workout.exercises.map((exercise) => {
-      const results = {
-        date: new Date(),
-        sets: [],
-      };
-      for (let i = 1; i <= exercise.sets; i++) {
-        const setReps = req.body[`${exercise._id}-set-${i}-reps`]
-        const setWeight = req.body[`${exercise._id}-set-${i}-weight`]
-        results.sets.push({
-          reps: setReps ? parseInt(setReps) : 0,
-          weight: setWeight ? parseFloat(setWeight) : 0,
-        })
-      }
-      return {
-        exercise: exercise._id,
-        results: results,
-      }
+    .populate('exercises')
+    .then((workout) => {
+      const exercisesResults = workout.exercises.map((exercise) => {
+        const results = {
+          date: new Date(),
+          sets: [],
+        };
+        for (let i = 1; i <= exercise.sets; i++) {
+          const setReps = req.body[`${exercise._id}-set-${i}-reps`];
+          const setWeight = req.body[`${exercise._id}-set-${i}-weight`];
+          results.sets.push({
+            reps: setReps ? parseInt(setReps) : 0,
+            weight: setWeight ? parseFloat(setWeight) : 0,
+          });
+        }
+        return {
+          exerciseName: exercise.text, // Use exercise.text as a string
+          results: results,
+        };
+      });
+      const newWorkoutResult = new WorkoutResult({
+        user: req.user._id,
+        workout: req.params.workoutId,
+        exercises: exercisesResults,
+      });
+      return newWorkoutResult.save();
     })
-    const newWorkoutResult = new WorkoutResult({
-      user: req.user._id,
-      workout: req.params.workoutId,
-      exercises: exercisesResults,
+    .then(() => {
+      res.redirect('/');
     })
-    return newWorkoutResult.save()
-  })
-  .then(() => {
-    res.redirect('/')
-  })
-  .catch((err) => {
-    console.error(err)
-    res.redirect('/workouts')
-  })
+    .catch((err) => {
+      console.error(err);
+      res.redirect('/workouts');
+    });
 }
+
 
 function getWorkoutHistory(req) {
   if (!req.user) {

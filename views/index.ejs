@@ -20,17 +20,13 @@
           <ul>
             <% result.exercises.forEach(exerciseResult => { %>
               <li>
-                <% if (exerciseResult.exercise) { %>
-                  <% if (exerciseResult.results && exerciseResult.results[0] && exerciseResult.results[0].sets && exerciseResult.results[0].sets.length) { %>
-                    <%= exerciseResult.exercise.text %>
-                    <ul>
-                      <% exerciseResult.results[0].sets.forEach((set, index) => { %>
-                        <li>Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
-                      <% }); %>
-                    </ul>
-                  <% } else { %>
-                    No sets data available.
-                  <% } %>
+                <% if (exerciseResult.exerciseName) { %>
+                  <strong><%= exerciseResult.exerciseName %></strong>
+                  <ul>
+                    <% exerciseResult.results[0].sets.forEach((set, index) => { %>
+                      <li>Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
+                    <% }); %>
+                  </ul>
                 <% } else { %>
                   Exercise not found.
                 <% } %>

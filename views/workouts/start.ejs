@@ -2,9 +2,11 @@
 <%- include('../partials/nav') %>
 
 <form action="/workouts/<%= workout._id %>/results" method="POST">
-  <% workout.exercises.forEach(exercise => { %>
+  <% exercises.forEach(exercise => { %>
     <fieldset>
       <legend><%= exercise.text %></legend>
+      <!-- Hidden input for exercise text -->
+      <input type="hidden" name="exerciseTexts" value="<%= exercise.text %>">
       <% for(let i = 1; i <= exercise.sets; i++) { %>
         <label>Set <%= i %></label>
         <input type="number" name="<%= exercise._id %>-set-<%= i %>-reps" placeholder="Reps">

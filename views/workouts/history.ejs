@@ -1,0 +1,25 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<h1>Your Workout History</h1>
+
+<% workoutResults.forEach(workoutResult => { %>
+  <section class="workout-result">
+    <h2>Workout Date: <%= workoutResult.date.toDateString() %></h2>
+    <% workoutResult.exercises.forEach(exerciseResult => { %>
+      <fieldset>
+        <legend><%= exerciseResult.exercise.text %></legend>
+        <% exerciseResult.results.sets.forEach((set, index) => { %>
+          <p>
+            Set <%= index + 1 %>: <%= set.reps %> Reps
+            <% if (set.weight) { %>
+              - <%= set.weight %> Weight
+            <% } %>
+          </p>
+        <% }) %>
+      </fieldset>
+    <% }) %>
+  </section>
+<% }) %>
+
+<%- include('../partials/footer') %>

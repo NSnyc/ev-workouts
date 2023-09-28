@@ -3,17 +3,17 @@
 
 <main>
   <h1><%= title %></h1>
-  <form id="new-exercise"action="/exercises/<%= exercise._id %>?_method=PUT" method="POST">
-    <label for="text">Name</label>
-    <input type="text" name="text" value="<%= exercise.text %>">
-    <label for="category">Workout Type</label>
-    <select name="category" id="category-select" value="<%= exercise.category %>">
+  <form id="edit-exercise" action="/exercises/<%= exercise._id %>?_method=PUT" method="POST">
+    <label for="exercise-name">Name</label>
+    <input type="text" name="text" id= "exercise-name" value="<%= exercise.text %>">
+    <label for="exercise-category">Workout Type</label>
+    <select name="category" id="exercise-category" value="<%= exercise.category %>">
       <option value="Cardio">Cardio</option>
       <option value="Body Weight">Body Weight</option>
       <option value="Weights">Weights</option>
     </select>
-    <label for="muscleGroup">Muscle Group</label>
-    <select name="muscleGroup" id="muscleGroup-select" value="<%= exercise.muscleGroup %>">
+    <label for="muscle-group">Muscle Group</label>
+    <select name="muscleGroup" id="muscle-group-select" value="<%= exercise.muscleGroup %>">
       <option value="Chest">Chest</option>
       <option value="Back">Back</option>
       <option value="Legs">Legs</option>
@@ -22,10 +22,10 @@
       <option value="Core">Core</option>
       <option value="Full Body">Full Body</option>
     </select>
-    <label for="sets">Number of Sets:</label>
-    <input type="range" min="1" max="5" name="sets" id="sets" oninput="this.nextElementSibling.value = this.value" value="<%= exercise.sets %>">
-    <output id="sets"><%= exercise.sets %></output>
-    <button type="submit">Save Exercise</button>
+    <label for="exercise-sets">Number of Sets:</label>
+    <input type="range" min="1" max="5" name="sets" id="exercise-sets" oninput="this.nextElementSibling.value = this.value" value="<%= exercise.sets %>">
+    <output id="sets-output"><%= exercise.sets %></output>
+    <button type="submit" class="save-exercise">Save Exercise</button>
   </form>
 </main>
 

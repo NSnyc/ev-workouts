@@ -2,59 +2,31 @@ html {
   box-sizing: border-box;
 }
 
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
+*, 
+*::before,
 *::after {
-  /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default but can be overridden as needed */
   box-sizing: inherit;
 }
 
 body {
-  background-color: #1a1a1a;
+  background-color: #494848;
   color: #f6f6f6;
-  /* Use a system font, if none are available use any found sans-sarif font */
   font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
     'Helvetica Neue', sans-serif;
   margin: 0;
-  padding: 50px;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: linear-gradient(to right, 
+  #000000 5%,   
+  #666666 ,   
+  #666666 , 
+  #fcfcfc 5%,  
+  #666666, 
+  #666666 5% ,   
+  #000000 );  
+  height: 100vh; 
 }
-
-nav {
-  background-color: #f6f6f6;
-  color: #1a1a1a;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  min-height: 60px;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.right {
-  margin-left: auto;
-}
-
-a {
-  color: #00B7FF;
-}
-
-.delete {
-  display: inline-block;
-  margin-right: 10px;
-}
-	
-.delete button {
-  color: red;
-}
-	
-li {
-  list-style: circle;
+button
+{
+  box-shadow: 2px 2px 2px #888888;
 }

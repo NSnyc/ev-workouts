@@ -1,65 +1,44 @@
-# MEN Stack with OAuth Template
+# Workout Tracking App
 
-This is a MEN Stack template that includes OAuth.
+![Workout App Screenshot](screenshot.png)
 
-Use this to go build things! 🚀
+## Description
 
-## To Use This Template
+The Workout Tracking App is a web-based application that allows users to track their workout routines and progress. It provides a user-friendly interface for creating and managing workouts, recording exercise details, and viewing workout history. This app can help you stay organized and motivated.
 
-__Replace `<name-of-your-app-here>` (including the `<` and `>`) in the commands below with the name of your app!__
+## Getting Started
 
-```bash
-git clone https://github.com/SEI-Remote/men-stack-oauth-template.git <name-of-your-app-here>
-cd <name-of-your-app-here>
-```
+- **Deployed App**: [Workout Tracking App](https://ev-workouts.fly.dev/)
+- **Trello Board**: [Project Planning on Trello](https://trello.com/b/Rv5CQ33K/workout-tracker)
 
-Once you are in the project directory:
+## Attributions
 
-```bash
-rm -rf .git
-```
+This project uses the following external resources:
 
-Here's what your command line output should like after this step (note that the indicator that we are in a git repository is gone!)
+- [MongoDB University](https://university.mongodb.com/): Free MongoDB Courses
+- [Node.js](https://nodejs.org/en/docs/guides): Node.js documentation and guides.
+- [YouTube - Ben Manley](https://www.youtube.com/@benmanley6070): Ben Manley's YouTube Channel
+- [W3 Schools](https://www.w3schools.com/): W3 Schools tutorials
+- [MDN Web Docs](https://developer.mozilla.org/en-US/): MDN Web Docs 
 
-<img src="https://i.imgur.com/L47kNOZ.png" alt="The command line before and after running the rm -rf .git command. Before git:(main) is visible indiating that the directory contains a git repository, after the command it is not.">
 
-Re-initialize a git repository:
+## Technologies Used
 
-```bash
-git init
-```
+- **Front-end**:
+  - HTML
+  - CSS
+  - JavaScript
+- **Back-end**:
+  - Node.js
+  - Express.js
+  - MongoDB (with Mongoose)
+- **Version Control**:
+  - Git and GitHub
 
-Create a repo for this project on GitHub and add that remote to your project with `git remote add origin Your-repo-URL-here`.
+## Next Steps
 
-Run npm i to fetch the template's dependencies:
+Planned future enhancements for the app (icebox items):
 
-```bash
-npm i
-```
-
-touch a .env file:
-
-```bash
-touch .env
-```
-
-Fill it with the following:
-
-```
-DATABASE_URL=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_CLIENT_ID=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-GOOGLE_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-SESSION_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-Replace the `DATABASE_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_SECRET`, and `SESSION_SECRET` with values that you provide.
-
-Delete this `README.md` file and finally, make an initial commit:
-
-```bash
-git add .
-git commit -m "initial commit"
-git push origin main
-```
-
-You're done!
+- Add a feature to calculate and display workout statistics and progress graphs.
+- Enable sharing workout routines with friends or trainers.
+- Develop a mobile app version for on-the-go tracking.

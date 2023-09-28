@@ -5,14 +5,19 @@
 <body>
   <nav>
     <a 
-      href="/workouts" class=<%= title === 'All Workouts' ? 'active' : '' %>
+      href="/" class=<%= title === 'Home' ? 'active' : '' %>
     >
-      ALL WORKOUTS
+      HOME
     </a>
     <a 
-      href="/exercises" class=<%= title === 'All Exercises' ? 'active' : '' %>
+      href="/workouts" class=<%= title === 'Workouts' ? 'active' : '' %>
     >
-      ALL EXERCISES
+      WORKOUTS
+    </a>
+    <a 
+      href="/exercises" class=<%= title === 'Exercises' ? 'active' : '' %>
+    >
+      EXERCISES
     </a>
     <% if (user) { %>
       <a href="/auth/logout" class="right">

@@ -17,7 +17,7 @@ function index(req, res) {
     })
   })
   .catch(err => {
-    console.log(err);
+    console.log(err)
     res.redirect('/workouts/new')
   })
 }
@@ -44,7 +44,7 @@ function create(req, res) {
   if (!req.user) {
     return res.redirect('/login')
   }
-  const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds];
+  const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds]
   const workoutData = {
     name: req.body.name,
     user: req.user._id,
@@ -52,13 +52,13 @@ function create(req, res) {
     date: Date.now(),
   }
   Workout.create(workoutData)
-    .then(workout => {
-      res.redirect('/workouts/new')
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/workouts')
-    })
+  .then(workout => {
+    res.redirect('/workouts/new')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
 }
 
 function show(req, res) {
@@ -86,64 +86,64 @@ function show(req, res) {
 
 function deleteWorkout(req, res) {
   Workout.findByIdAndDelete(req.params.workoutId)
-    .then(() => {
-      res.redirect('/workouts')
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/workouts')
-    })
+  .then(() => {
+    res.redirect('/workouts')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
 }
 
 function addExercise(req, res) {
   Workout.findById(req.params.workoutId)
-    .then(workout => {
-      if (workout.exercises.includes(req.body.exerciseId)) {
-        res.redirect('/workouts')
-      } else {
-        workout.exercises.push(req.body.exerciseId)
-        return workout.save()
-          .then(() => {
-            res.redirect('/workouts')
-          })
-      }
-    })
-    .catch(err => {
-      console.log(err)
+  .then(workout => {
+    if (workout.exercises.includes(req.body.exerciseId)) {
       res.redirect('/workouts')
-    })
+    } else {
+      workout.exercises.push(req.body.exerciseId)
+      return workout.save()
+      .then(() => {
+        res.redirect('/workouts')
+      })
+    }
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
 }
 
 function removeExercise(req, res) {
   Workout.findById(req.params.workoutId)
-    .then(workout => {
-      workout.exercises.pull(req.params.exerciseId)
-      return workout.save()
-    })
-    .then(() => {
-      res.redirect('/workouts')
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/workouts')
-    })
+  .then(workout => {
+    workout.exercises.pull(req.params.exerciseId)
+    return workout.save()
+  })
+  .then(() => {
+    res.redirect('/workouts')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/workouts')
+  })
 }
 
 function start(req, res) {
   Workout.findById(req.params.workoutId).populate('exercises')
   .then(workout => {
     Exercise.find({ _id: { $in: workout.exercises } }) // Fetch exercise names
-      .then(exercises => {
-        res.render('workouts/start', {
-          workout: workout,
-          exercises: exercises, // Pass exercise names to the template
-          title: "Start Workout",
-        })
+    .then(exercises => {
+      res.render('workouts/start', {
+        workout: workout,
+        exercises: exercises, // Pass exercise names to the template
+        title: "Start Workout",
       })
-      .catch(err => {
-        console.error(err)
-        res.redirect('/workouts')
-      })
+    })
+    .catch(err => {
+      console.error(err)
+      res.redirect('/workouts')
+    })
   })
   .catch(err => {
     console.error(err)
@@ -154,50 +154,47 @@ function start(req, res) {
 
 function saveResults(req, res) {
   if (!req.user) {
-    return res.redirect('/');
+    return res.redirect('/')
   }
 
   Workout.findById(req.params.workoutId)
-    .populate('exercises')
-    .then((workout) => {
-      const exercisesResults = workout.exercises.map((exercise) => {
-        const results = {
-          date: new Date(),
-          sets: [],
-        };
-        for (let i = 1; i <= exercise.sets; i++) {
-          const setReps = req.body[`${exercise._id}-set-${i}-reps`];
-          const setWeight = req.body[`${exercise._id}-set-${i}-weight`];
-          results.sets.push({
-            reps: setReps ? parseInt(setReps) : 0,
-            weight: setWeight ? parseFloat(setWeight) : 0,
-          });
-        }
-        return {
-          exerciseName: exercise.text,
-          results: results,
-        };
-      });
-
-      // Get the workout name from the populated workout
-      const workoutName = workout.name;
-
-      const newWorkoutResult = new WorkoutResult({
-        user: req.user._id,
-        workout: req.params.workoutId,
-        workoutName: workoutName, // Save the workout name as a string
-        exercises: exercisesResults,
-      });
-
-      return newWorkoutResult.save();
+  .populate('exercises')
+  .then((workout) => {
+    const exercisesResults = workout.exercises.map((exercise) => {
+      const results = {
+        date: new Date(),
+        sets: [],
+      }
+      for (let i = 1; i <= exercise.sets; i++) {
+        const setReps = req.body[`${exercise._id}-set-${i}-reps`]
+        const setWeight = req.body[`${exercise._id}-set-${i}-weight`]
+        results.sets.push({
+          reps: setReps ? parseInt(setReps) : 0,
+          weight: setWeight ? parseFloat(setWeight) : 0,
+        })
+      }
+      return {
+        exerciseName: exercise.text,
+        results: results,
+      }
     })
-    .then(() => {
-      res.redirect('/');
+    // Get the workout name from the populated workout
+    const workoutName = workout.name
+    const newWorkoutResult = new WorkoutResult({
+      user: req.user._id,
+      workout: req.params.workoutId,
+      workoutName: workoutName, // Save the workout name as a string
+      exercises: exercisesResults,
     })
-    .catch((err) => {
-      console.error(err);
-      res.redirect('/workouts');
-    });
+    return newWorkoutResult.save()
+  })
+  .then(() => {
+    res.redirect('/')
+  })
+  .catch((err) => {
+    console.error(err)
+    res.redirect('/workouts')
+  })
 }
 
 
@@ -206,10 +203,10 @@ function getWorkoutHistory(req) {
     return Promise.resolve([])
   }
   return WorkoutResult.find({ user: req.user._id })
-    .populate({
-      path: 'exercises.results.sets'
-    })
-    .exec()
+  .populate({
+    path: 'exercises.results.sets'
+  })
+  .exec()
 }
 
 export {

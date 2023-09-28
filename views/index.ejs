@@ -25,16 +25,16 @@
                   <ul>
                     <% exerciseResult.results[0].sets.forEach((set, index) => { %>
                       <li>Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
-                    <% }); %>
+                    <% }) %>
                   </ul>
                 <% } else { %>
                   Exercise not found.
                 <% } %>
               </li>
-            <% }); %>
+            <% }) %>
           </ul>
         </li>
-      <% }); %>
+      <% }) %>
     </ul>
   <% } else { %>
     <p>No workout history available.</p>

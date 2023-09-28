@@ -30,3 +30,51 @@ button
 {
   box-shadow: 2px 2px 2px #888888;
 }
+
+/* Base styles for the navigation bar */
+nav {
+  background-color: #f6f6f6;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  min-height: 60px;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Style for the navigation links */
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Style for the active link */
+nav a.active {
+  color: #007bff; 
+}
+nav .right{
+  margin-left: auto;
+}
+/* Style for the Logout button */
+nav .right button{
+  
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 7px 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+}
+
+/* Hover effect for the Logout button */
+nav .right button:hover {
+  background-color: #ffffff;
+  color: #007bff;
+}

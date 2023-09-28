@@ -78,3 +78,20 @@ nav .right button:hover {
   background-color: #ffffff;
   color: #007bff;
 }
+
+/* Style for the Google Sign-In button */
+.g_id_signin {
+  margin-left: 10px;
+  background-color: #fff;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 2px 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  border-radius: 9px;
+}
+
+/* Hover effect for the Google Sign-In button */
+.g_id_signin:hover {
+  background-color: #007bff;
+}

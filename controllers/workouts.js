@@ -156,6 +156,7 @@ function saveResults(req, res) {
   if (!req.user) {
     return res.redirect('/');
   }
+
   Workout.findById(req.params.workoutId)
     .populate('exercises')
     .then((workout) => {
@@ -173,15 +174,21 @@ function saveResults(req, res) {
           });
         }
         return {
-          exerciseName: exercise.text, // Use exercise.text as a string
+          exerciseName: exercise.text,
           results: results,
         };
       });
+
+      // Get the workout name from the populated workout
+      const workoutName = workout.name;
+
       const newWorkoutResult = new WorkoutResult({
         user: req.user._id,
         workout: req.params.workoutId,
+        workoutName: workoutName, // Save the workout name as a string
         exercises: exercisesResults,
       });
+
       return newWorkoutResult.save();
     })
     .then(() => {

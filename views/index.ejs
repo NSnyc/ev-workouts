@@ -16,7 +16,7 @@
     <ul>
       <% workoutHistory.forEach(result => { %>
         <li>
-          <strong><%= result.workout.name %></strong> - <%= result.date.toDateString() %>
+          <strong><%= result.workoutName %></strong> - <%= result.date.toDateString() %>
           <ul>
             <% result.exercises.forEach(exerciseResult => { %>
               <li>

@@ -205,3 +205,19 @@ tbody td {
 tbody tr:nth-child(even) {
   background-color: #f2f2f2; /* Alternate row color */
 }
+
+/* Button styles */
+.btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker shade of blue on hover */
+}
+.selection-form{
+  width: 100%;
+}

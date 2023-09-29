@@ -1,10 +1,10 @@
 # Workout Tracking App
 
-![Workout App Screenshot](screenshot.png)
+![Workout App Screenshot](./assets/screen.png)
 
 ## Description
 
-The Workout Tracking App is a web-based application that allows users to track their workout routines and progress. It provides a user-friendly interface for creating and managing workouts, recording exercise details, and viewing workout history. This app can help you stay organized and motivated.
+This Workout Tracking App is a web-based application that allows users to track their workout routines and progress. It provides a user-friendly interface for creating and managing workouts, recording exercise details, and viewing workout history. This app can help you stay organized and motivated.
 
 ## Getting Started
 

@@ -2,29 +2,32 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>Hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1 class="main-header">Hello, <%= user ? user.profile.name : "friend" %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
         src="<%= user.profile.avatar %>"
         alt="<%= user.profile.name %> avatar"
+        class="user-avatar"
       />
     </div>
   <% } %>
   <% if (workoutHistory && workoutHistory.length) { %>
-    <h2>Your Workout History</h2>
-    <ul>
+    <h2 class="workout-history-header">Your Workout History</h2>
+    <ul class="workout-history-list">
       <% workoutHistory.forEach(result => { %>
-        <li>
+        <li class="workout-history-item">
           <strong><%= result.workoutName %></strong> - <%= result.date.toDateString() %>
-          <ul>
+          <ul class="exercise-list">
             <% result.exercises.forEach(exerciseResult => { %>
-              <li>
+              <li class="exercise-list-item">
                 <% if (exerciseResult.exerciseName) { %>
-                  <strong><%= exerciseResult.exerciseName %></strong>
-                  <ul>
+                  <br/> <br/>
+                  <strong class="exercise-name"><%= exerciseResult.exerciseName %></strong>
+                  <br/> <br/>
+                  <ul class="set-details">
                     <% exerciseResult.results[0].sets.forEach((set, index) => { %>
-                      <li>Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
+                      <li class="set-details-item">Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
                     <% }) %>
                   </ul>
                 <% } else { %>
@@ -37,7 +40,7 @@
       <% }) %>
     </ul>
   <% } else { %>
-    <p>No workout history available.</p>
+    <p class="no-history">No workout history available.</p>
   <% } %>
 </main>
 

@@ -95,3 +95,70 @@ nav .right button:hover {
 .g_id_signin:hover {
   background-color: #007bff;
 }
+
+/* Page header */
+.main-header {
+  color: #adabab;
+}
+
+/* User avatar styles */
+.user-avatar {
+  max-width: 150px;
+  margin-top: 10px;
+}
+
+/* Workout history styles */
+.workout-history-header {
+  color: #adabab;
+}
+
+.workout-history-list {
+  width: 80vw;
+  list-style: none;
+  padding: 0;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+.workout-history-item {
+  margin-bottom: 20px;
+  padding: 0;  
+  border: 2px solid white;
+  background-color: rgb(74, 82, 82);
+  padding: 40px;
+  border-radius: 20px;
+}
+
+/* Exercise list styles */
+.exercise-list {
+  list-style: none;
+  padding: 0;
+}
+
+.exercise-list-item {
+  margin-bottom: 10px;
+}
+
+.exercise-name {
+  font-weight: bold;
+  color: #00e1ff;
+  margin: 50px 0px;
+}
+
+/* Set details styles */
+.set-details {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.set-details-item {
+  margin-bottom: 5px;
+  color: #e0dede;
+
+}
+
+/* No workout history styles */
+.no-history {
+  color: #f0f0f0;
+}

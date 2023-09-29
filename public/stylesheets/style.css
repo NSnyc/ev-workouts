@@ -104,8 +104,9 @@ nav .right button:hover {
 
 /* User avatar styles */
 .user-avatar {
-  max-width: 150px;
+  max-width: 50px;
   margin-top: 10px;
+  border-radius: 5px;
 }
 
 /* Workout history styles */

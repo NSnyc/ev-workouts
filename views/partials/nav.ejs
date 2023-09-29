@@ -4,6 +4,15 @@
 </head>
 <body>
   <nav>
+    <% if (user?.profile.avatar) { %>
+      <div>
+        <img
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+          class="user-avatar"
+        />
+      </div>
+    <% } %>
     <a href="/" class=<%= title === 'Home' ? 'active' : '' %>
       >
       HOME

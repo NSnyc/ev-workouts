@@ -3,17 +3,9 @@
 
 <main>
   <h1 class="main-header">Hello, <%= user ? user.profile.name : "friend" %></h1>
-  <% if (user?.profile.avatar) { %>
-    <div>
-      <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
-        class="user-avatar"
-      />
-    </div>
-  <% } %>
+  
   <% if (workoutHistory && workoutHistory.length) { %>
-    <h2 class="workout-history-header">Your Workout History</h2>
+    <h2 class="workout-history-header">Your Workout History:</h2>
     <ul class="workout-history-list">
       <% workoutHistory.forEach(result => { %>
         <li class="workout-history-item">

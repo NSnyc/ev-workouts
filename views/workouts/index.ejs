@@ -20,14 +20,14 @@
   <tbody>
     <% workouts.forEach(workout => { %>
       <tr>
-        <td><a href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
+        <td><a class="workout-name" href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
         <td>USER</td>
-        <td>
+        <td class="exercise-list-in-workout">
           <ul>
             <% workout.exercises.forEach(exercise => { %>
               <li>
                 <%= exercise.text %>
-                <form class="selection-form" action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST" style="display: inline;" >
+                <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST" style="display: inline;" >
                   <button id="delete" class="delete" type="submit">X</button>
                 </form>
               </li>
@@ -35,7 +35,7 @@
           </ul>
         </td>
         <td>
-          <form action="/workouts/<%= workout._id %>/exercises" method="POST" autocomplete="off">
+          <form class="selection-form" action="/workouts/<%= workout._id %>/exercises" method="POST" autocomplete="off">
               <select name="exerciseId">
                   <% exercises.forEach(exercise => { %>
                       <option value="<%= exercise._id %>"><%= exercise.text %></option>

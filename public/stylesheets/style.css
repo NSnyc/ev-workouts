@@ -240,3 +240,15 @@ tbody tr:nth-child(even) {
   padding: 2px 5px;
   
 }
+
+/* Links */
+a {
+  color: #2c3588;
+  text-decoration: none;
+  font-weight: bolder;
+  
+}
+
+a:hover {
+  text-decoration: underline;
+}

@@ -346,3 +346,46 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 3px;
 }
+
+/* Form styles */
+.edit-exercise form ,.new-exercise{
+
+  width: 40vw;
+  margin: 20px auto;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 10px rgb(175, 174, 174);  
+  border-radius: 20px;
+  height: fit-content;
+}
+
+/* Label styles */
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #c0c0c0;
+  font-weight: bold;
+}
+
+/* Input and select styles */
+input, select {
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Range input and output styles */
+input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+output {
+  display: block;
+  margin-top: 1px;
+  margin-bottom: 20px;
+  color: #ddd;
+}

@@ -5,7 +5,7 @@
 
 <main>
 <h1>Workout List</h1>
-<a href="/workouts/new">Add New Workout</a>
+<a class="btn" href="/workouts/new">Add New Workout</a>
 <table id="list">
   <thead>
     <tr>
@@ -21,7 +21,7 @@
     <% workouts.forEach(workout => { %>
       <tr>
         <td class="workout-name"><b><%= workout.name %></b></td>
-        <td>USER</td>
+        <td><%= user.profile.name %></td>
         <td class="exercise-list-in-workout">
           <ul>
             <% workout.exercises.forEach(exercise => { %>

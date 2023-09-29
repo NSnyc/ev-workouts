@@ -17,7 +17,7 @@ body {
   padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: linear-gradient(to right, 
-  #000000 5%,   
+  #666666 5%,
   #666666 ,   
   #666666 , 
   #fcfcfc 5%,  
@@ -245,7 +245,7 @@ tbody tr:nth-child(even) {
 
 /* Links */
 a {
-  color: #a3a1a1;
+  color: #879bf1;
   text-decoration: none;
   font-weight: bolder;
   
@@ -271,4 +271,49 @@ a:hover {
 .workout-name {
   color: black;
   font-weight: bolder;
+}
+
+/* New Workout Form container styles */
+.new-form ,.start-form{
+  width: 40vw;
+  margin: 20px auto;
+  padding: 40px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 5px 5px 10px rgb(175, 174, 174);  
+  border-radius: 20px;
+  height: fit-content;
+}
+
+/* Label styles */
+.new-form label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Input styles */
+.new-form input[type="text"],
+.new-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+/* Button styles */
+.new-form button[type="submit"],.start-form button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.new-form button:hover , .start-form button:hover {
+  background-color: #013d7c; 
 }

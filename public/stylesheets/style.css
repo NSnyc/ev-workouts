@@ -162,3 +162,12 @@ nav .right button:hover {
 .no-history {
   color: #f0f0f0;
 }
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+}

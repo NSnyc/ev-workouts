@@ -221,3 +221,22 @@ tbody tr:nth-child(even) {
 .selection-form{
   width: 100%;
 }
+
+/* Delete button styles */
+.delete-form button,.delete{
+  background-color: #ff6347; /* Red color for delete button */
+  color: #fff;
+  padding: 5px 7px;
+  text-decoration: none;
+  border-radius: 3px;
+  border: none;
+}
+
+.delete-form button:hover,.delete:hover {
+  color: #d32323; /* Darker red on hover */
+}
+
+.delete{
+  padding: 2px 5px;
+  
+}

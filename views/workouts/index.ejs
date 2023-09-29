@@ -20,7 +20,7 @@
   <tbody>
     <% workouts.forEach(workout => { %>
       <tr>
-        <td><a class="workout-name" href="/workouts/<%= workout._id %>"><%= workout.name %></a></td>
+        <td class="workout-name"><b><%= workout.name %></b></td>
         <td>USER</td>
         <td class="exercise-list-in-workout">
           <ul>

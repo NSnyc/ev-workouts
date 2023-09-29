@@ -64,7 +64,6 @@ nav .right {
 
 /* Style for the Logout button */
 nav .right button {
-  
   background-color: #007bff;
   color: white;
   border: none;
@@ -245,7 +244,7 @@ tbody tr:nth-child(even) {
 
 /* Links */
 a {
-  color: #879bf1;
+  color: #002fff;
   text-decoration: none;
   font-weight: bolder;
   
@@ -388,4 +387,54 @@ output {
   margin-top: 1px;
   margin-bottom: 20px;
   color: #ddd;
+}
+
+/* Page header styles */
+.exercise-title {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Exercise info section styles */
+.exercise-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  background-color: #bdbdbd;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.info-item {
+  font-weight: bold;
+  color: #333;
+}
+
+.info-value {
+  color: #555;
+}
+
+/* Edit button styles */
+.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background-color: #2035aa; 
+}
+
+/* Go back link styles */
+.go-back-link {
+  color: #5d79d4;
+}
+
+.go-back-link:hover {
+  text-decoration: underline;
+  color: #3856ff;
 }

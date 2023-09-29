@@ -10,7 +10,6 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>User</th>
       <th>Exercises</th>
       <th>Add Exercise</th>
       <th></th>
@@ -21,7 +20,6 @@
     <% workouts.forEach(workout => { %>
       <tr>
         <td class="workout-name"><b><%= workout.name %></b></td>
-        <td><%= user.profile.name %></td>
         <td class="exercise-list-in-workout">
           <ul>
             <% workout.exercises.forEach(exercise => { %>

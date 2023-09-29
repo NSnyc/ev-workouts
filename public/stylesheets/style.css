@@ -195,7 +195,7 @@ thead th {
   background-color: #83b9f1;
   color: #000000;
   padding: 10px;
-  text-align: left;
+  text-align:justify;
 }
 
 tbody td {
@@ -256,14 +256,9 @@ a:hover {
 }
 
 .exercise-list-in-workout ul li {
-  border: #535353 solid 2px;
+  border: #535353 solid 1px;
   padding: 5px;
-  width: 100%;
-  text-align: start;
   margin: 2px;
-}
-
-.exercise-list-in-workout ul li {
   display: flex;
   justify-content: space-between;
 }
@@ -274,7 +269,7 @@ a:hover {
 }
 
 /* New Workout Form container styles */
-.new-form ,.start-form{
+.new-form, .start-form{
   width: 40vw;
   margin: 20px auto;
   padding: 40px;

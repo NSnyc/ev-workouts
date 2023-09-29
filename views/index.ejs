@@ -2,8 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1 class="main-header">Hello, <%= user ? user.profile.name : "friend" %></h1>
-  
+  <h1 class="main-header">Hello, <%= user ? user.profile.name : "gym rat" %>!</h1>
   <% if (workoutHistory && workoutHistory.length) { %>
     <h2 class="workout-history-header">Your Workout History:</h2>
     <ul class="workout-history-list">
@@ -33,6 +32,7 @@
     </ul>
   <% } else { %>
     <p class="no-history">No workout history available.</p>
+    <p class="no-history">Sign in to log your workouts!</p>
   <% } %>
 </main>
 

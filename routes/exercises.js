@@ -8,11 +8,11 @@ const router = Router()
 router.get('/', exercisesCtrl.index)
 router.get('/new', isLoggedIn, exercisesCtrl.new)
 router.get('/:exerciseId', exercisesCtrl.show)
-router.get('/:exerciseId/edit', exercisesCtrl.edit)
+router.get('/:exerciseId/edit', isLoggedIn, exercisesCtrl.edit)
 
 router.post('/', isLoggedIn, exercisesCtrl.create)
 
-router.delete('/:exerciseId', exercisesCtrl.delete)
-router.put('/:exerciseId', exercisesCtrl.update)
+router.delete('/:exerciseId', isLoggedIn, exercisesCtrl.delete)
+router.put('/:exerciseId', isLoggedIn, exercisesCtrl.update)
 
 export { router }

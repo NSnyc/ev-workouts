@@ -9,7 +9,6 @@
       <% workoutHistory.forEach(result => { %>
         <li class="workout-history-item">
           <strong><%= result.workoutName %></strong> - <%= result.date.toDateString() %>
-          <button class="delete-btn" data-workout-id="<%= result._id %>">Delete</button>
           <ul class="exercise-list">
             <% result.exercises.forEach(exerciseResult => { %>
               <li class="exercise-list-item">

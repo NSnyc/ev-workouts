@@ -1,7 +1,7 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<form action="/workouts/<%= workout._id %>/results" method="POST">
+<form class="start-form" action="/workouts/<%= workout._id %>/results" method="POST">
   <% exercises.forEach(exercise => { %>
     <fieldset>
       <legend><%= exercise.text %></legend>

@@ -294,8 +294,7 @@ a:hover {
 }
 
 /* Input styles */
-.new-form input[type="text"],
-.new-form select {
+.new-form input, .new-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -304,7 +303,7 @@ a:hover {
 }
 
 /* Button styles */
-.new-form button[type="submit"],.start-form button[type="submit"] {
+.new-form button, .start-form button {
   background-color: #007bff;
   color: #fff;
   padding: 10px 20px;
@@ -316,4 +315,34 @@ a:hover {
 
 .new-form button:hover , .start-form button:hover {
   background-color: #013d7c; 
+}
+
+/* Fieldset styles */
+.start-form fieldset {
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+/* Legend styles */
+.start-form legend {
+  font-weight: bold;
+  color: #fa0a0a;
+  font-size: 1rem;
+  margin: 1px 5px;
+}
+
+/* Label styles */
+.start-form label {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input styles */
+.start-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
 }

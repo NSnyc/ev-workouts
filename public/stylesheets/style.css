@@ -171,3 +171,33 @@ main {
   width: 70%;
   margin: auto;
 }
+
+/* Table styles */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background-color: #c4c4c4;
+  height: fit-content;
+  padding: 100px;
+  box-shadow: 5px 5px 10px #888888;
+}
+
+tr{
+  border: 3px solid #000000; /* Add a border for visualization */
+  padding: 10px; /* Add padding for spacing */
+}
+
+thead th {
+  background-color: #83b9f1;
+  color: #000000;
+  padding: 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  color: #000000;
+}

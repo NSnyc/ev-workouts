@@ -7,53 +7,52 @@
 <h1>Workout List</h1>
 <a class="btn" href="/workouts/new">Add New Workout</a>
 <table id="list">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Exercises</th>
-      <th>Add Exercise</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% workouts.forEach(workout => { %>
-      <tr>
-        <td class="workout-name"><b><%= workout.name %></b></td>
-        <td class="exercise-list-in-workout">
-          <ul>
-            <% workout.exercises.forEach(exercise => { %>
-              <li>
-                <%= exercise.text %>
-                <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST" style="display: inline;" >
-                  <button id="delete" class="delete" type="submit">X</button>
-                </form>
-              </li>
-            <% }) %>
-          </ul>
-        </td>
-        <td>
-          <form class="selection-form" action="/workouts/<%= workout._id %>/exercises" method="POST" autocomplete="off">
-              <select name="exerciseId">
-                  <% exercises.forEach(exercise => { %>
-                      <option value="<%= exercise._id %>"><%= exercise.text %></option>
-                  <% }) %>
-              </select>
-              <button type="submit">Add</button>
-          </form>
-      </td>
-      <td>
-        <a href="/workouts/<%= workout._id %>/start" class="btn">Start</a>
-      </td>
-        <td>
-          <form class="delete-form" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-          </form>
-          
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
+<thead>
+<tr>
+<th>Name</th>
+<th>Exercises</th>
+<th>Add Exercise</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<% workouts.forEach(workout => { %>
+  <tr>
+  <td class="workout-name"><b><%= workout.name %></b></td>
+  <td class="exercise-list-in-workout">
+  <ul>
+  <% workout.exercises.forEach(exercise => { %>
+    <li>
+    <%= exercise.text %>
+    <form action="/workouts/<%= workout._id %>/exercises/<%= exercise._id %>?_method=DELETE" method="POST" style="display: inline;" >
+    <button id="delete" class="delete" type="submit">X</button>
+    </form>
+    </li>
+  <% }) %>
+  </ul>
+  </td>
+  <td>
+  <form class="selection-form" action="/workouts/<%= workout._id %>/exercises" method="POST" autocomplete="off">
+  <select name="exerciseId">
+  <% exercises.forEach(exercise => { %>
+    <option value="<%= exercise._id %>"><%= exercise.text %></option>
+  <% }) %>
+  </select>
+  <button type="submit">Add</button>
+  </form>
+</td>
+<td>
+  <a href="/workouts/<%= workout._id %>/start" class="btn">Start</a>
+</td>
+  <td>
+  <form class="delete-form" action="/workouts/<%= workout._id %>?_method=DELETE" method="POST">
+  <button type="submit">X</button>
+  </form>
+  </td>
+  </tr>
+<% }) %>
+</tbody>
 </table>
 </main>
 

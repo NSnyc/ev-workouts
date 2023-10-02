@@ -2,31 +2,31 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <h1 class="page-title"><%= title %></h1>
-  <form id="edit-exercise" action="/exercises/<%= exercise._id %>?_method=PUT" method="POST">
-    <label for="exercise-name">Name</label>
-    <input type="text" name="text" id= "exercise-name" value="<%= exercise.text %>">
-    <label for="exercise-category">Workout Type</label>
-    <select name="category" id="exercise-category" value="<%= exercise.category %>">
-      <option value="Cardio">Cardio</option>
-      <option value="Body Weight">Body Weight</option>
-      <option value="Weights">Weights</option>
-    </select>
-    <label for="muscle-group">Muscle Group</label>
-    <select name="muscleGroup" id="muscle-group-select" value="<%= exercise.muscleGroup %>">
-      <option value="Chest">Chest</option>
-      <option value="Back">Back</option>
-      <option value="Legs">Legs</option>
-      <option value="Arms">Arms</option>
-      <option value="Shoulders">Shoulders</option>
-      <option value="Core">Core</option>
-      <option value="Full Body">Full Body</option>
-    </select>
-    <label for="exercise-sets">Number of Sets:</label>
-    <input type="range" min="1" max="5" name="sets" id="exercise-sets" oninput="this.nextElementSibling.value = this.value" value="<%= exercise.sets %>">
-    <output id="sets-output"><%= exercise.sets %></output>
-    <button type="submit" class="save-exercise">Save Exercise</button>
-  </form>
+<h1 class="page-title"><%= title %></h1>
+<form id="edit-exercise" action="/exercises/<%= exercise._id %>?_method=PUT" method="POST">
+<label for="exercise-name">Name</label>
+<input type="text" name="text" id= "exercise-name" value="<%= exercise.text %>">
+<label for="exercise-category">Workout Type</label>
+<select name="category" id="exercise-category" value="<%= exercise.category %>">
+<option value="Cardio">Cardio</option>
+<option value="Body Weight">Body Weight</option>
+<option value="Weights">Weights</option>
+</select>
+<label for="muscle-group">Muscle Group</label>
+<select name="muscleGroup" id="muscle-group-select" value="<%= exercise.muscleGroup %>">
+<option value="Chest">Chest</option>
+<option value="Back">Back</option>
+<option value="Legs">Legs</option>
+<option value="Arms">Arms</option>
+<option value="Shoulders">Shoulders</option>
+<option value="Core">Core</option>
+<option value="Full Body">Full Body</option>
+</select>
+<label for="exercise-sets">Number of Sets:</label>
+<input type="range" min="1" max="5" name="sets" id="exercise-sets" oninput="this.nextElementSibling.value = this.value" value="<%= exercise.sets %>">
+<output id="sets-output"><%= exercise.sets %></output>
+<button type="submit" class="save-exercise">Save Exercise</button>
+</form>
 </main>
 
 <%- include('../partials/footer') %>

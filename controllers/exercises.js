@@ -5,7 +5,6 @@ function index(req, res) {
   .then(exercises => {
     res.render('exercises', {
       exercises,
-      time: req.time,
       title: 'Exercises'
     })
   })
@@ -22,7 +21,6 @@ function newExercise(req, res) {
 }
 
 function create(req, res) {
-  req.body.done = false
   Exercise.create(req.body)
   .then(exercise => {
     res.redirect('/exercises')

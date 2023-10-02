@@ -1,4 +1,6 @@
-# Workout Tracking App
+# Workout Tracker
+
+ **Deployed App**: [# Workout Tracking App](https://ev-workouts.fly.dev/) 
 
 ![Workout App Screenshot](./assets/screen.png)
 
@@ -12,7 +14,6 @@ Users can log in on the Home page and see their workout history.
 Users can navigate between exercise and workout indexes where they can create their own exercises to add them to an existing or new workout.
 In the Workouts index, users can start a workout to log their progress, which is accessed on the Home page.
 
-- **Deployed App**: [Workout Tracking App](https://ev-workouts.fly.dev/)
 - **Trello Board**: [Project Planning on Trello](https://trello.com/b/Rv5CQ33K/workout-tracker)
 
 ## Attributions
@@ -24,6 +25,8 @@ This project uses the following external resources:
 - [YouTube - Ben Manley](https://www.youtube.com/@benmanley6070): Ben Manley's YouTube Channel
 - [W3 Schools](https://www.w3schools.com/): W3 Schools tutorials
 - [MDN Web Docs](https://developer.mozilla.org/en-US/): MDN Web Docs 
+- [Favicon](https://icons8.com/): Free Favicons 
+- [Favicon Generator](https://favicon.io/): Favicon Generator 
 
 
 ## Technologies Used
@@ -37,7 +40,6 @@ This project uses the following external resources:
   ![Nodemon](https://img.shields.io/badge/NODEMON-%23323330.svg?style=for-the-badge&logo=nodemon&logoColor=%BBDEAD)
   ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
   ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
-  ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
   ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
   ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
   ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
@@ -45,6 +47,7 @@ This project uses the following external resources:
   ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
   ![Trello](https://img.shields.io/badge/Trello-%23026AA7.svg?style=for-the-badge&logo=Trello&logoColor=white)
   ![Passport](https://img.shields.io/badge/Passport-34E27A.svg?style=for-the-badge&logo=Passport&logoColor=white)
+  Google OAuth
 - **Version Control**:
   ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
   ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)

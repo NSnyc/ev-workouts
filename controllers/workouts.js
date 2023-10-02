@@ -41,9 +41,6 @@ function newWorkout(req, res) {
 }
 
 function create(req, res) {
-  if (!req.user) {
-    return res.redirect('/login')
-  }
   const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds]
   const workoutData = {
     name: req.body.name,
@@ -132,11 +129,11 @@ function removeExercise(req, res) {
 function start(req, res) {
   Workout.findById(req.params.workoutId).populate('exercises')
   .then(workout => {
-    Exercise.find({ _id: { $in: workout.exercises } }) // Fetch exercise names
+    Exercise.find({ _id: { $in: workout.exercises } })
     .then(exercises => {
       res.render('workouts/start', {
         workout: workout,
-        exercises: exercises, // Pass exercise names to the template
+        exercises: exercises, 
         title: "Start Workout",
       })
     })

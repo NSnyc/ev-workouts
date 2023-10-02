@@ -4,24 +4,24 @@
 <main class="show-exercise">
 <h1>Exercises</h1>
 <div class="exercise-info">
-  <section class="exercise-info">
-    <div class="info-item">Name: </div>
-    <div class="info-value"><%= exercise.text %></div>
-    <div class="info-item">Type: </div>
-    <div class="info-value"><%= exercise.category %></div>
-    <div class="info-item">Muscle Group: </div>
-    <div class="info-value"><%= exercise.muscleGroup %></div>
-    <div class="info-item">Sets: </div>
-    <div class="info-value"><%= exercise.sets%></div>
-    <div>
-      <a href="/exercises/<%= exercise._id %>/edit">
-        <button class="edit-btn" >Edit Exercise</button>
-      </a>
-    </div>
-  </section>
+<section class="exercise-info">
+<div class="info-item">Name: </div>
+<div class="info-value"><%= exercise.text %></div>
+<div class="info-item">Type: </div>
+<div class="info-value"><%= exercise.category %></div>
+<div class="info-item">Muscle Group: </div>
+<div class="info-value"><%= exercise.muscleGroup %></div>
+<div class="info-item">Sets: </div>
+<div class="info-value"><%= exercise.sets%></div>
+<div>
+<a href="/exercises/<%= exercise._id %>/edit">
+<button class="edit-btn" >Edit Exercise</button>
+</a>
+</div>
+</section>
 </div>
 <p></p>
 <a class="go-back-link" href="/exercises">Go back</a>
 </main>
 
-  <%- include('../partials/footer') %>
+<%- include('../partials/footer') %>

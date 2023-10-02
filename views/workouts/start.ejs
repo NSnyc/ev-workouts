@@ -2,19 +2,19 @@
 <%- include('../partials/nav') %>
 
 <form class="start-form" action="/workouts/<%= workout._id %>/results" method="POST">
-  <% exercises.forEach(exercise => { %>
-    <fieldset>
-      <legend><%= exercise.text %></legend>
-      <!-- Hidden input for exercise text -->
-      <input type="hidden" name="exerciseTexts" value="<%= exercise.text %>">
-      <% for(let i = 1; i <= exercise.sets; i++) { %>
-        <label>Set <%= i %></label>
-        <input type="number" name="<%= exercise._id %>-set-<%= i %>-reps" placeholder="Reps">
-        <input type="number" name="<%= exercise._id %>-set-<%= i %>-weight" placeholder="Weight (optional)">
-      <% } %>
-    </fieldset>
-  <% }) %>
-  <button type="submit">Save Results</button>
+<% exercises.forEach(exercise => { %>
+  <fieldset>
+  <legend><%= exercise.text %></legend>
+  <!-- Hidden input for exercise text -->
+  <input type="hidden" name="exerciseTexts" value="<%= exercise.text %>">
+  <% for(let i = 1; i <= exercise.sets; i++) { %>
+    <label>Set <%= i %></label>
+    <input type="number" name="<%= exercise._id %>-set-<%= i %>-reps" placeholder="Reps">
+    <input type="number" name="<%= exercise._id %>-set-<%= i %>-weight" placeholder="Weight (optional)">
+  <% } %>
+  </fieldset>
+<% }) %>
+<button type="submit">Save Results</button>
 </form>
 
 <%- include('../partials/footer') %>

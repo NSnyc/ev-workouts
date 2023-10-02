@@ -5,28 +5,28 @@
 <main>
 <h1>New Exercise</h1>
 <form id="new-exercise"action="/exercises" method="POST" autocomplete="off">
-  <label for="text">Name:</label>
-  <input type="text" name="text" placeholder="Exercise Name">
-  <label for="category">Workout Type:</label>
-  <select name="category" id="category-select" default="Full Body">
-    <option value="Cardio">Cardio</option>
-    <option value="Body Weight">Body Weight</option>
-    <option value="Weights">Weights</option>
-  </select>
-  <label for="muscleGroup">Muscle Group:</label>
-  <select name="muscleGroup" id="muscleGroup-select" default="Full Body">
-    <option value="Chest">Chest</option>
-    <option value="Back">Back</option>
-    <option value="Legs">Legs</option>
-    <option value="Arms">Arms</option>
-    <option value="Shoulders">Shoulders</option>
-    <option value="Core">Core</option>
-    <option value="Full Body">Full Body</option>
-  </select>
-  <label for="sets">Number of Sets:</label>
-  <input type="range" min="1" max="5" name="sets" id="sets" oninput="this.nextElementSibling.value = this.value">
-  <output id="sets">3</output>
-  <button type="submit">Save Exercise</button>
+<label for="text">Name:</label>
+<input type="text" name="text" placeholder="Exercise Name">
+<label for="category">Workout Type:</label>
+<select name="category" id="category-select" default="Full Body">
+<option value="Cardio">Cardio</option>
+<option value="Body Weight">Body Weight</option>
+<option value="Weights">Weights</option>
+</select>
+<label for="muscleGroup">Muscle Group:</label>
+<select name="muscleGroup" id="muscleGroup-select" default="Full Body">
+<option value="Chest">Chest</option>
+<option value="Back">Back</option>
+<option value="Legs">Legs</option>
+<option value="Arms">Arms</option>
+<option value="Shoulders">Shoulders</option>
+<option value="Core">Core</option>
+<option value="Full Body">Full Body</option>
+</select>
+<label for="sets">Number of Sets:</label>
+<input type="range" min="1" max="5" name="sets" id="sets" oninput="this.nextElementSibling.value = this.value">
+<output id="sets">3</output>
+<button type="submit">Save Exercise</button>
 </form>
 </main>
 

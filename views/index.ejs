@@ -2,38 +2,38 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1 class="main-header">Hello, <%= user ? user.profile.name : "gym rat" %>!</h1>
-  <% if (workoutHistory && workoutHistory.length) { %>
-    <h2 class="workout-history-header">Your Workout History:</h2>
-    <ul class="workout-history-list">
-      <% workoutHistory.forEach(result => { %>
-        <li class="workout-history-item">
-          <strong><%= result.workoutName %></strong> - <%= result.date.toDateString() %>
-          <ul class="exercise-list">
-            <% result.exercises.forEach(exerciseResult => { %>
-              <li class="exercise-list-item">
-                <% if (exerciseResult.exerciseName) { %>
-                  <br/> <br/>
-                  <strong class="exercise-name"><%= exerciseResult.exerciseName %></strong>
-                  <br/> <br/>
-                  <ul class="set-details">
-                    <% exerciseResult.results[0].sets.forEach((set, index) => { %>
-                      <li class="set-details-item">Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
-                    <% }) %>
-                  </ul>
-                <% } else { %>
-                  Exercise not found.
-                <% } %>
-              </li>
-            <% }) %>
-          </ul>
-        </li>
-      <% }) %>
+<h1 class="main-header">Hello, <%= user ? user.profile.name : "gym rat" %>!</h1>
+<% if (workoutHistory && workoutHistory.length) { %>
+  <h2 class="workout-history-header">Your Workout History:</h2>
+  <ul class="workout-history-list">
+  <% workoutHistory.forEach(result => { %>
+    <li class="workout-history-item">
+    <strong><%= result.workoutName %></strong> - <%= result.date.toDateString() %>
+    <ul class="exercise-list">
+    <% result.exercises.forEach(exerciseResult => { %>
+      <li class="exercise-list-item">
+      <% if (exerciseResult.exerciseName) { %>
+        <br/> <br/>
+        <strong class="exercise-name"><%= exerciseResult.exerciseName %></strong>
+        <br/> <br/>
+        <ul class="set-details">
+        <% exerciseResult.results[0].sets.forEach((set, index) => { %>
+          <li class="set-details-item">Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
+        <% }) %>
+        </ul>
+      <% } else { %>
+        Exercise not found.
+      <% } %>
+      </li>
+    <% }) %>
     </ul>
-  <% } else { %>
-    <p class="no-history">No workout history available.</p>
-    <p class="no-history">Sign in for more tools!</p>
-  <% } %>
+    </li>
+  <% }) %>
+  </ul>
+<% } else { %>
+  <p class="no-history">No workout history available.</p>
+  <p class="no-history">Sign in for more tools!</p>
+<% } %>
 </main>
 
 <%- include('./partials/footer') %>

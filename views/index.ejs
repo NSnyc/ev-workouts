@@ -17,9 +17,9 @@
         <strong class="exercise-name"><%= exerciseResult.exerciseName %></strong>
         <br/> <br/>
         <ul class="set-details">
-        <% exerciseResult.results[0].sets.forEach((set, index) => { %>
-          <li class="set-details-item">Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
-        <% }) %>
+          <% exerciseResult.results[0].sets.forEach((set, index) => { %>
+            <li class="set-details-item">Set <%= index + 1 %> - Reps: <%= set.reps %>, Weight: <%= set.weight !== undefined ? set.weight + ' lbs' : 'N/A' %></li>
+          <% }) %>
         </ul>
       <% } else { %>
         Exercise not found.

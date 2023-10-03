@@ -1,7 +1,7 @@
 import { Exercise } from "../models/exercise.js"
 import { Workout } from "../models/workout.js"
 import { WorkoutResult } from "../models/workoutResult.js"
-import { User } from "../models/user.js"
+import { Profile } from "../models/profile.js"
 
 
 function index(req, res) {
@@ -44,7 +44,7 @@ function create(req, res) {
   const exerciseIds = Array.isArray(req.body.exerciseIds) ? req.body.exerciseIds : [req.body.exerciseIds]
   const workoutData = {
     name: req.body.name,
-    user: req.user._id,
+    profile: req.profile._id,
     exercises: exerciseIds,
     date: Date.now(),
   }
@@ -176,7 +176,7 @@ function saveResults(req, res) {
     })
     const workoutName = workout.name
     const newWorkoutResult = new WorkoutResult({
-      user: req.user._id,
+      profile: req.profile._id,
       workout: req.params.workoutId,
       workoutName: workoutName,
       exercises: exercisesResults,
@@ -197,7 +197,7 @@ function getWorkoutHistory(req) {
   if (!req.user) {
     return Promise.resolve([])
   }
-  return WorkoutResult.find({ user: req.user._id })
+  return WorkoutResult.find({ profile: Profile._id })
   .populate({
     path: 'exercises.results.sets'
   })

@@ -150,9 +150,6 @@ function start(req, res) {
 
 
 function saveResults(req, res) {
-  if (!req.user) {
-    return res.redirect('/')
-  }
   Workout.findById(req.params.workoutId)
   .populate('exercises')
   .then((workout) => {
@@ -194,9 +191,6 @@ function saveResults(req, res) {
 
 
 function getWorkoutHistory(req) {
-  if (!req.user) {
-    return Promise.resolve([])
-  }
   return WorkoutResult.find({ profile: Profile._id })
   .populate({
     path: 'exercises.results.sets'
